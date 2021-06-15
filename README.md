@@ -1,8 +1,8 @@
 # intron-retention-scripts
 
-*under active development*
+**Not under active development**
 
-Component scripts of an intron retention analysis toolkit. These scripts will be integrated as addons for intron retention analysis a snakemake based rnaseq worklfow. 
+Component scripts of a snakemake based pipeline for intron retention analysis.
 
 ## Usage
 
@@ -24,7 +24,7 @@ python filter_gtf.py --gtf /path/to/gtf.db  --transtype retained_intron -out /pa
 
 3. `get_introns.py`
 
-get a list of clean(starts not overlapping with exons) introns from a gtf db
+get a list of clean(starts not overlapping with exons) introns from a gtf db. The `data` directory stores intron output bed files for mouse (Gencode M21) and human (Gencode 30).
 
 ```bash
 python get_introns.py --gtf /path/to/gtf.db  --out /path/to/introns.bed
@@ -43,6 +43,21 @@ python get_intron_type.py --bed /path/to/introns.bed  --branch /path/to/branch.p
 calculate mis splicing index(MSI) for a given sample bam file for introns supplied in a bed format
 
 ```bash
-python --bed /path/to/introns.bed  --bam /path/to/reads.bam --out /path/to/msi.xls
+python get_msi.py --bed /path/to/introns.bed  --bam /path/to/reads.bam --out /path/to/msi.xls
 ```
 
+6. `deltaMSI.R`
+
+calculate deltaMSI values for when given a treatment and control MSI output file from `get_msi.py`
+
+```bash
+Rscript --vanilla deltaMSI.R --trt /path/to/trt_msi.xls --cnt /path/to/cnt_msi.xls --trtname trt --cntname cnt --out /path/to/deltaMSI.xls
+```
+
+7. `plotdeltaMSI.R`
+
+plot the deltaMSI values for a given comparison as a dot/density plot post removing outliers.
+
+```bash
+Rscript --vanilla plotdeltaMSI.R --deltaMSI /path/to/deltaMSI.xls --outdot /path/to/dotplot.pdf --outdensity /path/to/densityplot.pdf
+```
