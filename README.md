@@ -32,7 +32,7 @@ python get_introns.py --gtf /path/to/gtf.db  --out /path/to/introns.bed
 
 4. `get_intron_type.py`
 
-classify each intron into U2/U12 type using PWM's from [splicerack](http://katahdin.mssm.edu/splice/index.cgi?database=spliceNew)
+classify each intron into U2/U12 type using PWM's from [splicerack](http://katahdin.mssm.edu/splice/index.cgi?database=spliceNew). The `data` directory stores gzipped intron type output xls files for mouse (Gencode M21) and human (Gencode 30).
 
 ```bash
 python get_intron_type.py --bed /path/to/introns.bed  --branch /path/to/branch.pwm --don /path/to/don.pwm --genome /path/to/genome.fa --out /path/to/intronType.xls
