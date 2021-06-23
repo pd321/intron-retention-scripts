@@ -54,7 +54,15 @@ calculate deltaMSI values for when given a treatment and control MSI output file
 Rscript --vanilla deltaMSI.R --trt /path/to/trt_msi.xls --cnt /path/to/cnt_msi.xls --trtname trt --cntname cnt --out /path/to/deltaMSI.xls
 ```
 
-7. `plotdeltaMSI.R`
+7. `addAnnotation.R`
+
+Add gene and intron type annotation to the raw dmsi file produced above. The data directory contains gene info files for human (hg38, hg19) and mouse (mm10) genomes.
+
+```bash
+Rscript --vanilla addAnnotation.R --gene /path/to/introns.bed --type /path/to/intronType.xls --geneinfo /path/to/geneinfo.xls --deltamsi /path/to/raw_dmsi.xls --out /path/to/processed_dmsi.xls
+```
+
+8. `plotdeltaMSI.R`
 
 plot the deltaMSI values for a given comparison as a dot/density plot post removing outliers.
 
